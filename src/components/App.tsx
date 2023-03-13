@@ -1,15 +1,13 @@
 import {
+  Box,
   Container,
   Divider,
   List,
-  ListItem,
   Typography,
-  Box,
-  Checkbox
 } from '@mui/material'
-import DeleteIcon from '@mui/icons-material/Delete'
 
 import AddField from 'components/AddField'
+import TaskItem from 'components/TaskItem'
 
 export default function App() {
   return (
@@ -46,26 +44,7 @@ export default function App() {
         {/* <Typography>Your list is empty...</Typography> */}
 
         <List>
-          <ListItem sx={{ p: 0, mb: 1 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                width: '100%',
-                justifyContent: 'space-between',
-                border: '1px solid rgba(0, 0, 0, 0.15)',
-                p: 2
-              }}
-            >
-              <Box
-                sx={{ display: 'flex', alignItems: 'center', width: '100%' }}
-              >
-                <Checkbox sx={{ p: 0, mr: 1 }} />
-                <Typography>Task goes here</Typography>
-              </Box>
-              <DeleteIcon sx={{ color: '#FF7961', cursor: 'pointer' }} />
-            </Box>
-          </ListItem>
+          <TaskItem />
         </List>
       </Box>
     </Container>
