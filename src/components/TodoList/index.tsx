@@ -24,6 +24,28 @@ export default function App() {
     setTaskList(tasksCopy)
   }
 
+  const updateTask = (id: string) => {
+    const tasksCopy: TaskType[] = structuredClone(taskList)
+    const indexOf = tasksCopy.findIndex((task) => task.id === id)
+
+    if (indexOf !== -1) {
+      tasksCopy[indexOf].isDone = !tasksCopy[indexOf].isDone
+
+      setTaskList(tasksCopy)
+    }
+  }
+
+  const deleteTask = (id: string) => {
+    const tasksCopy: TaskType[] = structuredClone(taskList)
+    const indexOf = tasksCopy.findIndex((task) => task.id === id)
+
+    if (indexOf !== -1) {
+      const newTaskList = tasksCopy.filter((task) => task.id !== id)
+
+      setTaskList(newTaskList)
+    }
+  }
+
   return (
     <Container
       maxWidth="xs"
@@ -60,7 +82,12 @@ export default function App() {
         ) : (
           <List>
             {taskList.map((task) => (
-              <TaskItem key={`task-${task.id}`} task={task} />
+              <TaskItem
+                key={`task-${task.id}`}
+                task={task}
+                updateTask={updateTask}
+                deleteTask={deleteTask}
+              />
             ))}
           </List>
         )}
