@@ -16,21 +16,30 @@ export default function TaskItem({
   updateTask,
   deleteTask
 }: TaskItemTypes) {
+  const isDone = task.isDone
+  const ID = task.id
+
   return (
     <ListItem sx={S.ListItemStyles}>
-      <Box sx={S.BoxStyles}>
+      <Box
+        sx={{
+          ...S.BoxStyles,
+          backgroundColor: isDone ? '#ededed' : 'inherit',
+          textDecoration: isDone ? 'line-through' : 'none'
+        }}
+      >
         <Box sx={S.TaskWrapper}>
           <Checkbox
             sx={S.CheckboxStyles}
-            checked={task.isDone}
-            onClick={() => updateTask(task.id)}
+            checked={isDone}
+            onClick={() => updateTask(ID)}
           />
 
           <Typography>{task.description}</Typography>
         </Box>
 
-        {task.isDone ? (
-          <DeleteIcon sx={S.IconStyles} onClick={() => deleteTask(task.id)} />
+        {isDone ? (
+          <DeleteIcon sx={S.IconStyles} onClick={() => deleteTask(ID)} />
         ) : null}
       </Box>
     </ListItem>
