@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, KeyboardEvent } from 'react'
 import { Box, TextField, Button } from '@mui/material'
 
 import * as S from './styles'
@@ -10,6 +10,12 @@ type AddFieldTypes = {
 export default function AddField({ createNewTask }: AddFieldTypes) {
   const [errorMessage, setErrorMessage] = useState('')
   const [descriptionValue, setDescriptionValue] = useState('')
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      submitTask(descriptionValue)
+    }
+  }
 
   const submitTask = (description: string): void => {
     if (!description.length) {
@@ -35,6 +41,7 @@ export default function AddField({ createNewTask }: AddFieldTypes) {
           placeholder="Type here..."
           sx={S.TextFieldStyles}
           value={descriptionValue}
+          onKeyDown={handleKeyDown}
           inputProps={{
             sx: S.InputStyles
           }}
