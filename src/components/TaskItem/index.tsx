@@ -3,14 +3,22 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import * as S from './styles'
 
-export default function TaskItem() {
+type TaskItemTypes = {
+  task: {
+    id: string
+    description: string
+    isDone: boolean
+  }
+}
+
+export default function TaskItem({ task }: TaskItemTypes) {
   return (
     <ListItem sx={S.ListItemStyles}>
       <Box sx={S.BoxStyles}>
         <Box sx={S.TaskWrapper}>
           <Checkbox sx={S.CheckboxStyles} />
 
-          <Typography>Task goes here</Typography>
+          <Typography>{task.description}</Typography>
         </Box>
 
         <DeleteIcon sx={S.IconStyles} />

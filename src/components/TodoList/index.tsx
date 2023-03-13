@@ -3,6 +3,8 @@ import { Box, Container, Divider, List, Typography } from '@mui/material'
 import AddField from 'components/AddField'
 import TaskItem from 'components/TaskItem'
 
+import tasks from 'mocks/tasks'
+
 export default function App() {
   return (
     <Container
@@ -35,10 +37,12 @@ export default function App() {
           My tasks
         </Typography>
 
-        {/* <Typography>Your list is empty...</Typography> */}
+        {/* <Typography>Your task list is empty...</Typography> */}
 
         <List>
-          <TaskItem />
+          {tasks.map((task) => (
+            <TaskItem key={`task-${task.id}`} task={task} />
+          ))}
         </List>
       </Box>
     </Container>
