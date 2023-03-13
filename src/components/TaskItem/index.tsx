@@ -1,14 +1,12 @@
 import { Box, Checkbox, ListItem, Typography } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 
+import { TaskType } from 'types'
+
 import * as S from './styles'
 
 type TaskItemTypes = {
-  task: {
-    id: string
-    description: string
-    isDone: boolean
-  }
+  task: TaskType
 }
 
 export default function TaskItem({ task }: TaskItemTypes) {

@@ -1,11 +1,29 @@
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { Box, Container, Divider, List, Typography } from '@mui/material'
 
 import AddField from 'components/AddField'
 import TaskItem from 'components/TaskItem'
 
-import tasks from 'mocks/tasks'
+import { TaskType } from 'types'
 
 export default function App() {
+  const [taskList, setTaskList] = useState<TaskType[]>([])
+
+  const createNewTask = (description: string) => {
+    const tasksCopy = structuredClone(taskList)
+
+    const newTask = {
+      id: uuidv4(),
+      description,
+      isDone: false
+    }
+
+    tasksCopy.unshift(newTask)
+
+    setTaskList(tasksCopy)
+  }
+
   return (
     <Container
       maxWidth="xs"
@@ -22,7 +40,7 @@ export default function App() {
         Welcome to your ToDo list.
       </Typography>
 
-      <AddField />
+      <AddField createNewTask={createNewTask} />
 
       <Divider sx={{ my: 3 }} />
 
@@ -37,13 +55,15 @@ export default function App() {
           My tasks
         </Typography>
 
-        {/* <Typography>Your task list is empty...</Typography> */}
-
-        <List>
-          {tasks.map((task) => (
-            <TaskItem key={`task-${task.id}`} task={task} />
-          ))}
-        </List>
+        {taskList.length === 0 ? (
+          <Typography>Your task list is empty...</Typography>
+        ) : (
+          <List>
+            {taskList.map((task) => (
+              <TaskItem key={`task-${task.id}`} task={task} />
+            ))}
+          </List>
+        )}
       </Box>
     </Container>
   )
