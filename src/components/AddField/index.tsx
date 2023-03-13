@@ -24,12 +24,13 @@ export default function AddField({ createNewTask }: AddFieldTypes) {
 
   return (
     <Box component="section" my={3}>
-      <Box display="flex" width="100%" alignItems="center">
+      <Box display="flex" width="100%" alignItems="flex-start">
         <TextField
           error={!!errorMessage}
           helperText={errorMessage}
           onChange={(event) => {
             setDescriptionValue(event.target.value)
+            setErrorMessage('')
           }}
           placeholder="Type here..."
           sx={S.TextFieldStyles}
