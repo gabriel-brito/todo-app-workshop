@@ -5,11 +5,11 @@ import {
   ListItem,
   Typography,
   Box,
-  TextField,
-  Button,
   Checkbox
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
+
+import AddField from 'components/AddField'
 
 export default function App() {
   return (
@@ -28,35 +28,7 @@ export default function App() {
         Welcome to your ToDo list.
       </Typography>
 
-      <Box component="section" my={3}>
-        <Box display="flex" width="100%" alignItems="center">
-          <TextField
-            placeholder="Type here..."
-            sx={{
-              borderBottomRightRadius: 0,
-              borderTopRightRadius: 0,
-              height: '100%',
-              width: '70%'
-            }}
-            inputProps={{
-              sx: { py: 1, px: 2 }
-            }}
-          />
-          <Button
-            variant="contained"
-            sx={{
-              borderBottomLeftRadius: 0,
-              borderTopLeftRadius: 0,
-              fontWeight: 600,
-              height: '39px',
-              ml: '-1px',
-              width: '30%'
-            }}
-          >
-            Submit
-          </Button>
-        </Box>
-      </Box>
+      <AddField />
 
       <Divider sx={{ my: 3 }} />
 
