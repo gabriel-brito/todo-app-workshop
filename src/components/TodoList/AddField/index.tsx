@@ -29,12 +29,14 @@ export default function AddField({ createNewTask }: AddFieldTypes) {
   }
 
   return (
-    <Box component="section" my={3}>
+    <Box component="section" my={3} data-testid="add-field-section">
       <Box display="flex" width="100%" alignItems="flex-start">
         <TextField
+          aria-label="description"
           error={!!errorMessage}
           helperText={errorMessage}
           onChange={(event) => {
+            event.preventDefault()
             setDescriptionValue(event.target.value)
             setErrorMessage('')
           }}
@@ -43,10 +45,12 @@ export default function AddField({ createNewTask }: AddFieldTypes) {
           value={descriptionValue}
           onKeyDown={handleKeyDown}
           inputProps={{
-            sx: S.InputStyles
+            sx: S.InputStyles,
+            'data-testid': 'inside-input'
           }}
         />
         <Button
+          role="submit-button"
           variant="contained"
           sx={S.ButtonStyles}
           onClick={() => submitTask(descriptionValue)}
