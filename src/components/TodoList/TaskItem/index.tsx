@@ -22,6 +22,7 @@ export default function TaskItem({
   return (
     <ListItem sx={S.ListItemStyles}>
       <Box
+        data-testid="task-item"
         sx={{
           ...S.BoxStyles,
           backgroundColor: isDone ? '#ededed' : 'inherit',
