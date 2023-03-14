@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { Box, Container, Divider, List, Typography } from '@mui/material'
 
-import AddField from 'components/AddField'
-import TaskItem from 'components/TaskItem'
+import AddField from 'components/TodoList/AddField'
+import TaskItem from 'components/TodoList/TaskItem'
 
 import { TaskType } from 'types'
 
