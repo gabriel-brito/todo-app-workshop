@@ -49,6 +49,7 @@ export default function App() {
   return (
     <Container
       maxWidth="xs"
+      data-testid="todo-list"
       sx={{
         backgroundColor: 'white',
         borderRadius: 1,
