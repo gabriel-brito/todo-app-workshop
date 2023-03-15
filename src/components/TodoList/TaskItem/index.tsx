@@ -14,7 +14,7 @@ type TaskItemTypes = {
 export default function TaskItem({ task }: TaskItemTypes) {
   return (
     <ListItem sx={S.ListItemStyles}>
-      <Box sx={S.BoxStyles}>
+      <Box sx={S.BoxStyles} data-testid="task-item">
         <Box sx={S.TaskWrapper}>
           <Checkbox sx={S.CheckboxStyles} />
 
