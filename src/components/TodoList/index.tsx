@@ -1,7 +1,7 @@
 import { Box, Container, Divider, List, Typography } from '@mui/material'
 
-import AddField from 'components/AddField'
-import TaskItem from 'components/TaskItem'
+import AddField from 'components/TodoList/AddField'
+import TaskItem from 'components/TodoList/TaskItem'
 
 import tasks from 'mocks/tasks'
 
